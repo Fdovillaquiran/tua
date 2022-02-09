@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 
-const connectDB = async() => {
-    return await mongoose.connect(process.env.ATLAS_URI)
+const connectDB = async(db) => {
+    return await mongoose.connect(db)
     .then(() => {
         console.log('Conection DB full');
     })
