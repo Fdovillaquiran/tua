@@ -2,19 +2,24 @@
 import Express from "express";
 import dotenv from "dotenv";
 import cors from "cors"
-import express from "express";
+import connectDB from './src/db.js'
 
 dotenv.config()
+const port= process.env.PORT 
 const app = Express()
 
 app.use(cors())
-app.use(express.json())
+app.use(Express.json())
 
 app.get('/', (req, res ) => {
     console.log('test home');
     res.send('res ok')
 })
 
-app.listen({ port: process.env.PORT || 4000}, async () => {
-    console.log('server ok');
-})
+async function main(){
+    await app.listen(port)
+    console.log(`server ok - in port ${port}`)
+    await connectDB()
+}
+
+main()
