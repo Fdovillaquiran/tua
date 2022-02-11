@@ -25,7 +25,7 @@ app.get('/', (req, res ) => {
     res.send('res ok')
 })
 
-async function main(){
+const main = async () => {
     await app.listen(port)
     console.log(`server http://localhost:${port}`)
     await connectDB(db)

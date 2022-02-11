@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const { Schema, Model } = mongoose;
+const { Schema, model } = mongoose;
 
 const taskSchema = new Schema({
     title: {
@@ -21,7 +21,7 @@ const taskSchema = new Schema({
     timestamps: true
 })
 
-const taskModel = Model('Task', taskSchema)
+const taskModel = model('Task', taskSchema)
 
 export { taskModel  }
 

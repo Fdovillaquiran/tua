@@ -1,16 +1,16 @@
-import { taskModel } from "../models/task.js"
+import { taskModel } from "../models/Task.js"
 
 const  tasksControllers = {}
 
-tasksControllers.gettasks = async(req, res) => {
+tasksControllers.getTasks = async(req, res) => {
     const tasks = await taskModel.find()
     res.json(tasks)
 }
-tasksControllers.gettask = async(req, res) => {
+tasksControllers.getTask = async(req, res) => {
     const task = await taskModel.findById(req.params.id)
     res.json(task)
 }
-tasksControllers.createtask = async(req, res) => {
+tasksControllers.createTask = async(req, res) => {
     //console.log(req.body);
     const { title, description, status } = req.body
     const newtask = new taskModel({
@@ -22,7 +22,7 @@ tasksControllers.createtask = async(req, res) => {
     await newtask.save()
     res.json({message: 'task create'})
 }
-tasksControllers.updatetask = async(req, res) => {
+tasksControllers.updateTask = async(req, res) => {
     const { title, description, status } = req.body
     await taskModel.findByIdAndUpdate(req.params.id, {
         title,
@@ -31,7 +31,7 @@ tasksControllers.updatetask = async(req, res) => {
     })
     res.json({message: 'task update'})
 }
-tasksControllers.deletetask = async(req, res) => {
+tasksControllers.deleteTask = async(req, res) => {
     const task = await taskModel.findByIdAndDelete(req.params.id)
     res.json({message: 'task delete'})
 }
